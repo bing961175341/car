@@ -40,3 +40,20 @@ body {
   height: 40px;
   line-height: 40px;
 }
+
+.right {
+  width: 50px;
+  text-align: center;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 999;
+  border: 1px solid red;
+}
+
+.right p {
+  width: 100%;
+  height: 30px;
+  background: yellow;
+  line-height: 30px;
+}
