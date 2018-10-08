@@ -13,7 +13,7 @@
 
     <div class="wrapper">
         <ul class="bigbox">
-            <li>
+            <!-- <li>
                 <h3>A</h3>
                 <ol>
                     <li>1</li>
@@ -27,31 +27,54 @@
                     <li>1</li>
 
                 </ol>
-            </li>
-            <li>
-                <h3>B</h3>
-                <ol>
-                    <li>2</li>
-                    <li>2</li>
-                    <li>2</li>
-                    <li>2</li>
-                </ol>
-            </li>
-            <li>
-                <h3>C</h3>
-                <ol>
-                    <li>3</li>
-                    <li>3</li>
-                    <li>3</li>
-                    <li>3</li>
-                    <li>3</li>
-                    <li>3</li>
-                </ol>
-            </li>
+            </li> -->
+
         </ul>
     </div>
     <script src="js/better-scroll.js"></script>
     <script src="js/jquery-2.1.1.min.js"></script>
+    <script>
+        var Bscroll = new BScroll('.wrapper');
+        $.ajax({
+            url: 'data/data.json',
+            success: function(res) {
+                if (res.code === 1) {
+                    render(res.data)
+                }
+            }
+        })
+
+        function render(data) {
+            var obj = {};
+            console.log(data);
+            data.forEach(function(item) {
+                var first = item.Spelling.substr(0, 1);
+                console.log(item.Name, item.Spelling.substr(0, 1))
+                if (!obj[first]) {
+                    obj[first] = {
+                        title: first,
+                        list: []
+                    }
+                }
+                obj[first].list.push(item);
+            })
+            var arr = [];
+            for (var k in obj) {
+                arr.push(obj[k]);
+            }
+            var str = "";
+            arr.forEach(function(file) {
+                str += `<li>
+                        <h3>${file.title}</h3>
+                        <ol>`
+                file.list.forEach(function(v) {
+                    str += `<li>${v.Name}</li>`
+                })
+                str += `</ol></li>`
+            })
+            $(".bigbox").append(str);
+        }
+    </script>
 </body>
 
 </html>
