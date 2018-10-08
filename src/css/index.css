@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bigbox {
+  width: 100%;
+}
+
+.bigbox > li {
+  width: 100%;
+}
+
+.bigbox > li h3 {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background: #ccc;
+}
+
+.bigbox > li ol {
+  width: 100%;
+}
+
+.bigbox > li ol li {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+}
